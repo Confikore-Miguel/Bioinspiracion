@@ -18,13 +18,19 @@ También hay botones en la parte inferior de la ventana.
 """
 
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib.widgets import Button, RadioButtons
+from matplotlib.backend_bases import NavigationToolbar2
 from collections import deque
 import random
 import sys
+from matplotlib.backend_bases import NavigationToolbar2
 
+NavigationToolbar2.toolitems = (
+    ('Save', 'Guardar imagen', 'filesave', 'save_figure'),
+)
 
 # ============================================================
 # 1. Generación de laberinto
@@ -430,6 +436,7 @@ class ACOApp:
 # 4. Punto de entrada
 # ============================================================
 if __name__ == '__main__':
-    plt.rcParams['toolbar'] = 'toolmanager'
+    # Deja la barra por defecto (toolbar2), pero vaciada más abajo
+    plt.rcParams['toolbar'] = 'toolbar2'
     app = ACOApp()
     plt.show()
