@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mente Artificial Bioinspirada - ACO</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>🧠 Mente Artificial Bioinspirada</h1>
+  <p>Simulación de comportamiento adaptativo basado en colonias de hormigas (ACO)</p>
+</header>
+
+<div class="app">
+  <aside class="panel controls">
+    <h2>⚙️ Parámetros</h2>
+
+    <label>Tamaño del laberinto: <span id="sizeVal">8</span></label>
+    <input type="range" id="size" min="4" max="20" value="8">
+
+    <label>Número de hormigas: <span id="antsVal">20</span></label>
+    <input type="range" id="ants" min="5" max="50" value="20">
+
+    <label>Alfa (α): <span id="alphaVal">1.0</span></label>
+    <input type="range" id="alpha" min="0.1" max="5" step="0.1" value="1">
+
+    <label>Beta (β): <span id="betaVal">2.0</span></label>
+    <input type="range" id="beta" min="0.1" max="5" step="0.1" value="2">
+
+    <label>Evaporación (ρ): <span id="rhoVal">0.5</span></label>
+    <input type="range" id="rho" min="0.01" max="0.99" step="0.01" value="0.5">
+
+    <label>Iteraciones máximas: <span id="iterVal">150</span></label>
+    <input type="range" id="iter" min="10" max="500" value="150">
+
+    <label>Modo de optimización:</label>
+    <select id="mode">
+      <option value="shortest">Ruta más corta</option>
+      <option value="longest">Ruta más larga</option>
+    </select>
+
+    <div class="btn-group">
+      <button id="btnStart">▶ Iniciar</button>
+      <button id="btnPause">⏸ Pausar</button>
+      <button id="btnReset">🔄 Reiniciar</button>
+      <button id="btnNewMaze">🗺 Nuevo laberinto</button>
+    </div>
+  </aside>
+
+  <main class="panel visualization">
+    <canvas id="canvas" width="620" height="620"></canvas>
+
+    <div class="stats">
+      <div><span>Iteración:</span> <strong id="statIter">0</strong></div>
+      <div><span>Longitud de ruta:</span> <strong id="statLength">-</strong></div>
+      <div><span>Celdas únicas:</span> <strong id="statUnique">-</strong></div>
+      <div><span>Fitness:</span> <strong id="statFitness">-</strong></div>
+      <div><span>BFS (referencia):</span> <strong id="statBFS">-</strong></div>
+      <div><span>Estado:</span> <strong id="statState">Detenido</strong></div>
+    </div>
+
+    <canvas id="chart" width="620" height="160"></canvas>
+    <p class="legend">📈 Convergencia: mejor fitness por iteración</p>
+  </main>
+</div>
+
+<script src="maze.js"></script>
+<script src="aco.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
